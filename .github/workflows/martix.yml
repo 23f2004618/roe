@@ -40,6 +40,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       
       - name: Display system information
+        shell: bash
         run: |
           echo "Node version: $(node --version)"
           echo "NPM version: $(npm --version)"
@@ -47,6 +48,7 @@ jobs:
           echo "Architecture: ${{ runner.arch }}"
       
       - name: Create build directory
+        shell: bash
         run: mkdir -p build
       
       - name: Generate build artifact
@@ -86,6 +88,7 @@ jobs:
           echo "Artifact contents created successfully"
       
       - name: Verify artifact contents
+        shell: bash
         run: |
           echo "Contents of build directory:"
           ls -la build/
@@ -105,6 +108,7 @@ jobs:
           if-no-files-found: error
       
       - name: Build summary
+        shell: bash
         run: |
           echo "✅ Build completed for ${{ matrix.os }} with Node.js ${{ matrix.node-version }}"
           echo "📦 Artifact: build-0c07c6a-${{ matrix.os }}-node${{ matrix.node-version }}"
